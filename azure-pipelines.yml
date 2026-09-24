@@ -17,3 +17,15 @@ jobs:
       targetType: 'inline'
       script: |
         Write-Host "Hello Shannu"
+
+
+pool: vistara-agents
+
+stages:
+- stage: planwaStage
+  displayName:Palanwa
+  jobs: 
+  - job: palanwajob
+    displayName: Palanwa
+    steps:
+    - task: 
