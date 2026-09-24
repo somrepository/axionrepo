@@ -1,0 +1,26 @@
+name: cipipeline
+
+trigger:
+- main
+
+pool:
+  name: adopool
+
+stages:
+- stage: Terraform_Init
+  displayName: 'Code Initialization'
+
+  jobs:
+  - job: Terraform_Init_Job
+    displayName: 'Terraform Init'
+
+    steps:
+    - task: TerraformTask@5
+      displayName: 'Terraform Init'
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'ado to az'
+        backendAzureRmStorageAccountName: 'yuvistg'
+        backendAzureRmContainerName: 'yuvicntr'
+        backendAzureRmKey: 'terraformbackup.tfstate'
